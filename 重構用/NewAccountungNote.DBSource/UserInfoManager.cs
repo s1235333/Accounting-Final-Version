@@ -12,15 +12,11 @@ namespace NewAccountungNote.DBSource
     
         public class UserInfoManager  //負責和資料庫取所有跟帳號有關的資料 引用兩個取得連線字串的方法
         {
-            public static string GetConnectionString()
-            {
-                string val = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-                return val;
-            }
+
 
             public static DataRow GetUserInfoByAccount(string account)
             {
-                string connectionString = GetConnectionString();
+                string connectionString = DBHelper.GetConnectionString();
                 string dbCommandString =
                     @"SELECT [ID], [Name],[PWD], [Account],[Email]
                   FROM UserInfo

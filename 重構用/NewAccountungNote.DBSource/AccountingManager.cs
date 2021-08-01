@@ -11,18 +11,13 @@ namespace NewAccountungNote.DBSource
 {
     public class AccountingManager
     {
-        //此頁程式碼為將值從AccountingList取出
-        public static string GetConnectionString()
-        {
-            string val = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
-            return val;
-        }
+     
         /// <summary>/// 查詢流水帳清單 /// </summary>
         /// <param name="userID"></param>
         /// <returns></returns>
         public static DataTable GetAccountingList(string userID) //拿userID當成過濾條件
         {
-            string connStr = GetConnectionString(); //建立連線字串
+            string connStr = DBHelper.GetConnectionString(); //建立連線字串
             string dbCommand =  //以下為查詢指令,User ID 及 Body不呈現
                 $@" SELECT 
                     ID,
@@ -64,7 +59,7 @@ namespace NewAccountungNote.DBSource
         /// <returns></returns>
         public static DataRow GetAccounting(int id ,string userID)
         {
-            string connStr = GetConnectionString(); //建立連線字串
+            string connStr = DBHelper.GetConnectionString(); //建立連線字串
             string dbCommand =  //以下為查詢指令,同時使用id及user ID就可以避免看到他人資料
                 $@" SELECT 
                     ID,
@@ -124,7 +119,7 @@ namespace NewAccountungNote.DBSource
                 throw new ArgumentException("ActType must between 0 or 1.");
             }
 
-            string connStr = GetConnectionString();
+            string connStr = DBHelper.GetConnectionString();
             string dbCommand =
                 $@" INSERT INTO [dbo].[Accounting]
                      (
@@ -193,7 +188,7 @@ namespace NewAccountungNote.DBSource
                 throw new ArgumentException("ActType must between 0 or 1.");
             }
 
-            string connStr = GetConnectionString();
+            string connStr = DBHelper.GetConnectionString();
             string dbCommand =
                 $@" UPDATE [Accounting]     
                        SET
