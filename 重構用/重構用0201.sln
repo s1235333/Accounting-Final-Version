@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31515.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountingNote", "AccountingNote\AccountingNote.csproj", "{FBEFDEB1-D717-4CD5-BC30-ABDBEE6401B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewAccountungNote.DBSource", "NewAccountungNote.DBSource\NewAccountungNote.DBSource.csproj", "{44242EB8-BDAB-4268-B28F-5A0B61FFB40C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FBEFDEB1-D717-4CD5-BC30-ABDBEE6401B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBEFDEB1-D717-4CD5-BC30-ABDBEE6401B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBEFDEB1-D717-4CD5-BC30-ABDBEE6401B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBEFDEB1-D717-4CD5-BC30-ABDBEE6401B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44242EB8-BDAB-4268-B28F-5A0B61FFB40C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44242EB8-BDAB-4268-B28F-5A0B61FFB40C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44242EB8-BDAB-4268-B28F-5A0B61FFB40C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44242EB8-BDAB-4268-B28F-5A0B61FFB40C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6CB08946-BD7B-4BA0-A822-B356178E453A}
+	EndGlobalSection
+EndGlobal
