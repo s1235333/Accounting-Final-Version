@@ -37,5 +37,32 @@ namespace NewAccountungNote.DBSource
                 }
             }
         }
+
+        public static DataRow ReadDataRow(string connStr, string dbCommand, List<SqlParameter> list)
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))  //連線用物件
+            {
+                using (SqlCommand comm = new SqlCommand(dbCommand, conn))//下命令用的物件
+                {
+                    comm.Parameters.AddRange(list.ToArray());
+
+                    
+                        conn.Open(); //連線開啟
+                        var reader = comm.ExecuteReader(); //command執行Reader後把值取回,存入reader
+
+                        DataTable dt = new DataTable();
+                        dt.Load(reader);
+
+                        if (dt.Rows.Count == 0) //回傳編輯的單筆即可
+                            return null;
+                        else
+                            return dt.Rows[0];
+                    
+                    
+                }
+            }
+        }
+
+
     }
 }

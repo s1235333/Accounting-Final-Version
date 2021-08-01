@@ -61,35 +61,23 @@ namespace NewAccountungNote.DBSource
                  FROM Accounting
                  WHERE id =@id AND UserID =@userID
                 ";
+            List<SqlParameter> list = new List<SqlParameter>(); //透過List把SqlParameter裝起來
+            list.Add(new SqlParameter("@id", id));//建立參數 
+            list.Add(new SqlParameter("@userID", userID));//建立參數 
 
-            using (SqlConnection conn = new SqlConnection(connStr))  //連線用物件
+            try
             {
-                using (SqlCommand comm = new SqlCommand(dbCommand, conn))//下命令用的物件
-                {
-                    comm.Parameters.AddWithValue("@id", id); //參數化查詢userID
-                    comm.Parameters.AddWithValue("@userID", userID); //參數化查詢userID
-                    try
-                    {
-                        conn.Open(); //連線開啟
-                        var reader = comm.ExecuteReader(); //command執行Reader後把值取回,存入reader
-
-                        DataTable dt = new DataTable();
-                        dt.Load(reader);
-
-                        if (dt.Rows.Count == 0) //回傳編輯的單筆即可
-                            return null;
-                        else
-                            return dt.Rows[0];
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.WriteLog(ex);
-                        return null;
-                    }
-                }
+                return DBHelper.ReadDataRow(connStr, dbCommand, list);
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(ex);
+                return null;
             }
 
-        } 
+        }
+
+   
 
         /// <summary> 建立新增流水帳/// </summary>
         /// <param name="userID"></param>
