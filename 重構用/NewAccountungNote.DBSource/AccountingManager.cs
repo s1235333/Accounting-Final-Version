@@ -29,29 +29,19 @@ namespace NewAccountungNote.DBSource
                  WHERE userID=@userID
                 ";
 
-            using (SqlConnection conn = new SqlConnection(connStr))  //連線用物件
+            List<SqlParameter> list = new List<SqlParameter>(); //透過List把SqlParameter裝起來
+            list.Add(new SqlParameter("@userID", userID));//建立參數 
+            try
             {
-                using (SqlCommand comm = new SqlCommand(dbCommand, conn))//下命令用的物件
-                {
-                    comm.Parameters.AddWithValue("@userID", userID); //參數化查詢userID
-                    try
-                    {
-                        conn.Open(); //連線開啟
-                        var reader = comm.ExecuteReader(); //command執行Reader後把值取回,存入reader
-
-                        DataTable dt = new DataTable();
-                        dt.Load(reader);
-
-                        return dt;
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.WriteLog(ex);
-                        return null;
-                    }
-                }
+                return DBHelper.ReadDataTable(connStr, dbCommand, list);//將上面參數傳給這個method
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(ex);
+                return null;
             }
         }
+
 
         /// <summary>/// 查詢流水帳清單 /// </summary>
         /// <param name="id"></param>
