@@ -65,7 +65,9 @@ namespace NewAccountungNote.DBSource
             }
         }
 
-        public  static void ModifyData(string connstr, string dbCommand, List<SqlParameter> ParamList)
+
+        //滿足updateAccounting .Delete的需求
+        public  static int ModifyData(string connstr, string dbCommand, List<SqlParameter> ParamList)
         {
             //connect db & execute
             using (SqlConnection conn = new SqlConnection(connstr))  //連線用物件
@@ -74,7 +76,8 @@ namespace NewAccountungNote.DBSource
                 {
                     comm.Parameters.AddRange(ParamList.ToArray());
                     conn.Open();
-                    comm.ExecuteNonQuery();
+                    int effectRowsCount = comm.ExecuteNonQuery(); //取得筆數,回傳
+                    return effectRowsCount;
                 }
             }
         }

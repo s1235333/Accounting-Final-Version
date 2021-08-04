@@ -11,7 +11,6 @@ namespace NewAccountungNote.DBSource
 {
     public class AccountingManager
     {
-        private static string connStr;
 
         /// <summary>/// 查詢流水帳清單 /// </summary>
         /// <param name="userID"></param>
@@ -80,7 +79,7 @@ namespace NewAccountungNote.DBSource
 
 
 
-        /// <summary> 建立新增流水帳/// </summary>
+        /// <summary> 新增建立流水帳/// </summary>
         /// <param name="userID"></param>
         /// <param name="caption"></param>
         /// <param name="amount"></param>
@@ -178,44 +177,33 @@ namespace NewAccountungNote.DBSource
                        ,CreateDate  =@createDate
                        ,Body        =@body
                   WHERE
-                        ID = @id
-                        
-                 ";
+                        ID = @id  ";
 
-            //連線db及命令
-            using (SqlConnection conn = new SqlConnection(connStr))  //連線用物件
+            List<SqlParameter> paramList = new List<SqlParameter>();
+            paramList.Add(new SqlParameter("@userID", userID)); //參數化查詢
+            paramList.Add(new SqlParameter("@caption", caption));
+            paramList.Add(new SqlParameter("@amount", amount));
+            paramList.Add(new SqlParameter("@actType", actType));
+            paramList.Add(new SqlParameter("@createDate", DateTime.Now)); //直接取當下時間即可
+            paramList.Add(new SqlParameter("@body", body));
+            paramList.Add(new SqlParameter("@id", ID));
+
+            try
             {
-                using (SqlCommand comm = new SqlCommand(dbCommand, conn))//下命令用的物件
-                {
-                    comm.Parameters.AddWithValue("@userID", userID); //參數化查詢
-                    comm.Parameters.AddWithValue("@caption", caption);
-                    comm.Parameters.AddWithValue("@amount", amount);
-                    comm.Parameters.AddWithValue("@actType", actType);
-                    comm.Parameters.AddWithValue("@createDate", DateTime.Now); //直接取當下時間即可
-                    comm.Parameters.AddWithValue("@body", body);
-                    comm.Parameters.AddWithValue("@id", ID);
-                    try
-                    {
-                        conn.Open(); //連線開啟
-                        int effectRows = comm.ExecuteNonQuery(); //受影響的資料
-
-                        if (effectRows == 1) //更動筆數
-                            return true;
-                        else
-                            return false; //沒有成功更新
-
-
-                    }
-                    catch (Exception ex)
-                    {
-                        Logger.WriteLog(ex);
-                        return false;
-
-                    }
-                }
+                int effectRows = DBHelper.ModifyData(connStr, dbCommand, paramList);
+                if (effectRows == 1) //更動筆數
+                    return true;
+                else
+                    return false; //沒有成功更新
             }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(ex);
+                return false;
 
+            }
         }
+
 
 
         /// <summary> 刪除流水帳/// </summary>
@@ -242,10 +230,12 @@ namespace NewAccountungNote.DBSource
             }
 
         }
-
-     
     }
 }
+
+
+
+
 
 
 
