@@ -1,4 +1,5 @@
-﻿using NewAccountungNote.DBSource;
+﻿using AccountingNote.Auth;
+using NewAccountungNote.DBSource;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,7 +15,7 @@ namespace AccountingNote.SystemAdmin
     {
         protected void Page_Load(object sender, EventArgs e) //讀取Accounting的資料
         {    //以下依然驗證登入
-            if (this.Session["UserLoginInfo"] == null) //先檢查session是存在,如果不存在(沒登入過),便導回登入頁
+           if(!AuthManager.IsLogined())
             {
                 Response.Redirect("/Login.aspx"); //沒登入過,便導回登入頁
                 return;
