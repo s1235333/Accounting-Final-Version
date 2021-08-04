@@ -22,15 +22,16 @@ namespace AccountingNote.SystemAdmin
             }
             //透過Session先取得現在登入者為誰,得到使用者完整資訊
             string account = this.Session["UserLoginInfo"] as string;//取得帳號
-            var dr = UserInfoManager.GetUserInfoByAccount(account);  //取得完整使用者資料
+            var currentUser = AuthManager.GetCnrrentUser();
 
-            if (dr == null)
+            if (currentUser == null) //有可能帳號被管理者移除掉,帳號不存在
             {
+                this.Session["UserLoginInfo"] = null; //為了避免無限迴圈(個人資訊頁及登入頁),因此清空Session
                 Response.Redirect("/Login.aspx");
                 return;
             }
             //read accounting data
-            var dt = AccountingManager.GetAccountingList(dr["ID"].ToString()); //取得ID,查詢完後把ID當作參數傳出
+            var dt = AccountingManager.GetAccountingList(currentUser.ID); //取得ID,查詢完後把ID當作參數傳出
 
             //以下做是否為0筆資料的判斷
             if (dt.Rows.Count > 0) //資料筆數大於0

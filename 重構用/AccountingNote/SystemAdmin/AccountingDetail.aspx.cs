@@ -1,4 +1,5 @@
-﻿using NewAccountungNote.DBSource;
+﻿using AccountingNote.Auth;
+using NewAccountungNote.DBSource;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,14 +21,15 @@ namespace AccountingNote.SystemAdmin
             }
             //透過Session先取得現在登入者為誰,得到使用者完整資訊
             string account = this.Session["UserLoginInfo"] as string;//取得帳號
-            var drUserInfo = UserInfoManager.GetUserInfoByAccount(account);  //取得完整使用者資料
+            var currentUser = AuthManager.GetCnrrentUser();
 
-            if (drUserInfo == null)
+            if (currentUser == null) //有可能帳號被管理者移除掉,帳號不存在
             {
+                this.Session["UserLoginInfo"] = null; //為了避免無限迴圈(個人資訊頁及登入頁),因此清空Session
                 Response.Redirect("/Login.aspx");
                 return;
             }
-            if(!this.IsPostBack)  //不是postback才來做讀取作業
+            if (!this.IsPostBack)  //不是postback才來做讀取作業
             {
                 //先確認是新增模式還是編輯模式(透過QueryString)
                 if (this.Request.QueryString["ID"] == null) //ID是null,表示是新增模式
@@ -43,7 +45,7 @@ namespace AccountingNote.SystemAdmin
                     if (int.TryParse(idText, out id)) //以下試試看將ID使用TryParse轉型成數字,並成功轉型
                     {
                         //從資料庫查出內容,並存在dr變數內
-                        var drAccounting = AccountingManager.GetAccounting(id,drUserInfo["ID"].ToString());  //簡單的二次確認是否為同一使用者
+                        var drAccounting = AccountingManager.GetAccounting(id,currentUser.ID);  //簡單的二次確認是否為同一使用者
                         if (drAccounting == null)  //如果查不到資料則提醒
                         {
                             this.ltMsg.Text = "Data doesn't exist";
@@ -163,19 +165,7 @@ namespace AccountingNote.SystemAdmin
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            string idText = this.Request.QueryString["ID"];
 
-            if (string.IsNullOrWhiteSpace(idText))
-                return;
-
-            int id;
-            if (int.TryParse(idText, out id))
-            {
-                // Execute 'delete db'
-                AccountingManager.DeleteAccounting(id);
-            }
-
-            Response.Redirect("/SystemAdmin/AccountingList.aspx");
         }
     }
 }

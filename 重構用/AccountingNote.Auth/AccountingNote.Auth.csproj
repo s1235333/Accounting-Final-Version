@@ -44,6 +44,13 @@
   <ItemGroup>
     <Compile Include="AuthManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserInfoModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NewAccountungNote.DBSource\NewAccountungNote.DBSource.csproj">
+      <Project>{44242EB8-BDAB-4268-B28F-5A0B61FFB40C}</Project>
+      <Name>NewAccountungNote.DBSource</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
