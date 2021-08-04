@@ -133,9 +133,7 @@ namespace NewAccountungNote.DBSource
                     try
                     {
                         conn.Open(); //連線開啟
-                        comm.ExecuteNonQuery(); //
-
-
+                        comm.ExecuteNonQuery();
                     }
                     catch (Exception ex)
                     {
