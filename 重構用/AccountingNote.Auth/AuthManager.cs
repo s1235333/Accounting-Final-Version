@@ -56,11 +56,62 @@ namespace AccountingNote.Auth
             return model;
         }
 
-        /// <summary> 清除登/// </summary>
+        public static bool TryLogin(string inp_Account, string inp_PWD, out object msg)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary> 登出/// </summary>
 
         public static void Logout()
         {
             HttpContext.Current.Session["UserLoginInfo"] = null; //清除登入資訊
+        }
+
+
+        /// <summary>
+        /// 嘗試登入
+        /// </summary>
+        /// <param name="account"></param>
+        /// <param name="pwd"></param>
+        /// <param name="errorMsg"></param>
+        /// <returns></returns>
+        public static bool TryLogin(string account,string pwd,out 
+            string errorMsg)
+        {
+
+            //check empty
+            if (string.IsNullOrWhiteSpace(account) || string.IsNullOrWhiteSpace(pwd))
+            {
+                errorMsg= "帳號或密碼為必填.";
+                return false; //一旦發生錯誤,後面程式不跑
+            }
+
+
+            //讀取資料庫並檢查
+            var dr = UserInfoManager.GetUserInfoByAccount(account);//從DB裡面查詢使用者輸入的account
+
+            if (dr == null) //如果是個資料不存在
+            {
+                errorMsg = $"Account:{account}帳號不存在";
+                return false;
+            }
+
+            //check account/pwd
+            if (string.Compare(dr["Account"].ToString(), account, true) == 0 && //帳號本身忽略大小寫
+                string.Compare(dr["PWD"].ToString(), pwd, false) == 0) //compare去比對輸入內容跟資料庫的資料
+            {
+                HttpContext.Current.Session["UserLoginInfo"] = dr["Account"].ToString(); //帳號寫到session內,才能在別的頁面知道登入狀況
+                errorMsg = string.Empty;
+                return true;
+            }
+            else
+            {
+                errorMsg = "登入失敗,請檢查帳號密碼";
+                return false;
+            }
+
+
         }
     }
 }
