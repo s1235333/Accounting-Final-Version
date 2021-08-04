@@ -11,7 +11,8 @@ namespace NewAccountungNote.DBSource
 {
     public class AccountingManager
     {
-     
+        private static string connStr;
+
         /// <summary>/// 查詢流水帳清單 /// </summary>
         /// <param name="userID"></param>
         /// <returns></returns>
@@ -47,7 +48,7 @@ namespace NewAccountungNote.DBSource
         /// <param name="id"></param>
         ///  /// <param name="userID"></param>
         /// <returns></returns>
-        public static DataRow GetAccounting(int id ,string userID)
+        public static DataRow GetAccounting(int id, string userID)
         {
             string connStr = DBHelper.GetConnectionString(); //建立連線字串
             string dbCommand =  //以下為查詢指令,同時使用id及user ID就可以避免看到他人資料
@@ -77,7 +78,7 @@ namespace NewAccountungNote.DBSource
 
         }
 
-   
+
 
         /// <summary> 建立新增流水帳/// </summary>
         /// <param name="userID"></param>
@@ -85,14 +86,14 @@ namespace NewAccountungNote.DBSource
         /// <param name="amount"></param>
         /// <param name="actType"></param>
         /// <param name="body"></param>
-        public static void CreateAccounting(string userID, string caption, int amount, int actType, string body) 
+        public static void CreateAccounting(string userID, string caption, int amount, int actType, string body)
         {
             //先確認輸入值合不合理(amount.ActType)
             if (amount < 0 || amount > 1000000)
             {
                 throw new ArgumentException("Amount must between 0 and 1,000,000.");
             }
-            if(actType < 0 || actType >1)
+            if (actType < 0 || actType > 1)
             {
                 throw new ArgumentException("ActType must between 0 or 1.");
             }
@@ -128,19 +129,19 @@ namespace NewAccountungNote.DBSource
                     comm.Parameters.AddWithValue("@caption", caption);
                     comm.Parameters.AddWithValue("@amount", amount);
                     comm.Parameters.AddWithValue("@actType", actType);
-                    comm.Parameters.AddWithValue("@createDate",DateTime.Now); //直接取當下時間即可
+                    comm.Parameters.AddWithValue("@createDate", DateTime.Now); //直接取當下時間即可
                     comm.Parameters.AddWithValue("@body", body);
                     try
                     {
                         conn.Open(); //連線開啟
                         comm.ExecuteNonQuery(); //
 
-                       
+
                     }
                     catch (Exception ex)
                     {
                         Logger.WriteLog(ex);
-                        
+
                     }
                 }
             }
@@ -196,9 +197,9 @@ namespace NewAccountungNote.DBSource
                     try
                     {
                         conn.Open(); //連線開啟
-                        int effectRows=comm.ExecuteNonQuery(); //受影響的資料
+                        int effectRows = comm.ExecuteNonQuery(); //受影響的資料
 
-                        if (effectRows == 1 ) //更動筆數
+                        if (effectRows == 1) //更動筆數
                             return true;
                         else
                             return false; //沒有成功更新
@@ -217,5 +218,34 @@ namespace NewAccountungNote.DBSource
         }
 
 
+        /// <summary> 刪除流水帳/// </summary>
+        /// <param name="ID"></param>
+
+        public static void DeleteAccounting(int ID)
+        {
+            string connstr = DBHelper.GetConnectionString();
+            string dbCommand =
+                $@"DELETE [Accounting]
+                 WHERE ID = @id";
+
+            List<SqlParameter> ParamList = new List<SqlParameter>(); //參數往外挪
+            ParamList.Add(new SqlParameter("@id", ID));
+
+
+            try
+            {
+                DBHelper.ModifyData(connstr, dbCommand, ParamList);
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(ex);
+            }
+
+        }
+
+     
     }
 }
+
+
+

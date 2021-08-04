@@ -18,6 +18,7 @@ namespace NewAccountungNote.DBSource
             return val;
         }
 
+        //讀取流水帳列表該頁
         public static DataTable ReadDataTable(string connStr, string dbCommand, List<SqlParameter> list)
         {
             using (SqlConnection conn = new SqlConnection(connStr))  //連線用物件
@@ -38,6 +39,7 @@ namespace NewAccountungNote.DBSource
             }
         }
 
+        //讀取單筆
         public static DataRow ReadDataRow(string connStr, string dbCommand, List<SqlParameter> list)
         {
             using (SqlConnection conn = new SqlConnection(connStr))  //連線用物件
@@ -63,6 +65,18 @@ namespace NewAccountungNote.DBSource
             }
         }
 
-
+        public  static void ModifyData(string connstr, string dbCommand, List<SqlParameter> ParamList)
+        {
+            //connect db & execute
+            using (SqlConnection conn = new SqlConnection(connstr))  //連線用物件
+            {
+                using (SqlCommand comm = new SqlCommand(dbCommand, conn))//下命令用的物件
+                {
+                    comm.Parameters.AddRange(ParamList.ToArray());
+                    conn.Open();
+                    comm.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
