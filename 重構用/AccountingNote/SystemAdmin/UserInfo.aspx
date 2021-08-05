@@ -18,20 +18,21 @@
             <tr>
                 <td>
                     <a href ="UserInfo.aspx">使用者資訊</a><br />
-                    <a href="AccountingList.aspx">流水帳管理</a>
+                    <a href="AccountingList.aspx">流水帳管理</a><br />
+                     <a href="UserList.aspx">會員管理</a>
 
                 </td>
                 <td>
                     <%--這裡放主要內容--%>
                     <table>
                         <tr>
-                            <th>Account</th>
+                            <th>帳號</th>
                             <td>
                                 <asp:Literal ID="ltAccount" runat="server"></asp:Literal>
                             </td>
                         </tr>
                         <tr>
-                            <th>Name</th>
+                            <th>姓名</th>
                             <td>
                                 <asp:Literal ID="ltName" runat="server"></asp:Literal>
                             </td>
@@ -43,7 +44,7 @@
                             </td>
                         </tr>
                     </table>
-                    <asp:Button ID="btnLogout" runat="server" Text="Log out" OnClick="btnLogout_Click" />
+                    <asp:Button ID="btnLogout" runat="server" Text="Log out" OnClick="btnLogout_Click1" />
                 </td>
             </tr>
         </table>

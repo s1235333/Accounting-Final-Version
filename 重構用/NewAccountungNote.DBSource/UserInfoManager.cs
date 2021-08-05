@@ -35,6 +35,49 @@ namespace NewAccountungNote.DBSource
                 return null;
             }
         }
+
+
+        //取得程式庫
+
+        public static DataTable GetDataBase(string str)
+        {
+            string connstr = DBHelper.GetConnectionString();
+            string dbCommand;
+            if (str.CompareTo("AS") == 0)
+            {
+                dbCommand =
+                    $@" SELECT
+                        Createdate
+                      FROM Accounting
+                      ORDER BY CreateDate ASC;";
+
+            }
+            else if (str.CompareTo("AL") == 0)
+            {
+                dbCommand =
+                      $@" SELECT
+                        Createdate
+                      FROM Accounting
+                      ORDER BY CreateDate DESC;";
+            }
+            else
+            {
+                dbCommand =
+                     $@" SELECT * FROM USERInfo;";
+            }
+            List<SqlParameter> list = new List<SqlParameter>();
+
+            try
+            {
+                return DBHelper.ReadDataTable(connstr, dbCommand, list);
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(ex);
+                return null;
+            }
+        }
+
     }
 }
 

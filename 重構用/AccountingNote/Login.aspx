@@ -8,10 +8,11 @@
     <title></title>
 </head>
 <body>
+    <h1>理財小幫手-開始你一天的錢錢日記</h1>
     <form id="form1" runat="server">
         <asp:PlaceHolder ID="plcLogin" runat="server" Visible="false">
-        Account:<asp:TextBox ID="txtAccount" runat="server"></asp:TextBox><br />
-        Password:<asp:TextBox ID="txtPWD" runat="server" TextMode="Password"></asp:TextBox><br />
+        帳號:<asp:TextBox ID="txtAccount" runat="server"></asp:TextBox><br />
+        密碼:<asp:TextBox ID="txtPWD" runat="server" TextMode="Password"></asp:TextBox><br /><br />
         <asp:Button ID="btnLogin" runat="server" Text="Button" OnClick="btnLogin_Click" /><br />
         <asp:Literal ID="ltlMsg" runat="server"></asp:Literal>
         </asp:PlaceHolder>

@@ -9,7 +9,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-         <table>
+<table>
             <tr>
                 <td colspan="2">
                     <h1>流水帳管理系統-後台</h1>
@@ -18,29 +18,27 @@
             <tr>
                 <td>
                     <a href ="UserInfo.aspx">使用者資訊</a><br />
-                    <a href="AccountingList.aspx">流水帳管理</a>
+                    <a href="AccountingList.aspx">流水帳管理</a><br />
+                    <a href="UserList.aspx">會員管理</a>
 
                 </td>
                 <td>
                        <%--這裡放主要內容--%>
-                    Type:<asp:DropDownList ID="ddlActType" runat="server">
+                    收/支:<asp:DropDownList ID="ddlActType" runat="server">
                         <asp:ListItem Value="0">支出</asp:ListItem>
                         <asp:ListItem Value="1">收入</asp:ListItem>
                          </asp:DropDownList>
-                    <br />
-                    Amount:
-                    <asp:TextBox ID="txtAmount" runat="server" Textmode="Number"></asp:TextBox><br/>
-                    Caption:
-                    <asp:TextBox ID="txtCaption" runat="server" ></asp:TextBox><br />
-                    Desc:
-                    <asp:TextBox ID="txtDesc" runat="server" TextMode="MultiLine"></asp:TextBox><br />
-                    <asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" />
+                    <br /><br />
+                    金額:
+                    <asp:TextBox ID="txtAmount" runat="server" Textmode="Number"></asp:TextBox><br/><br />
+                    標題:
+                    <asp:TextBox ID="txtCaption" runat="server" ></asp:TextBox><br /><br />
+                    備註:
+                    <asp:TextBox ID="txtDesc" runat="server" TextMode="MultiLine"></asp:TextBox><br /><br />
+                    <asp:Button ID="btnSave" runat="server" Text="儲存" OnClick="btnSave_Click1" />
                     &nbsp;
-                    <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" />
+                    <asp:Button ID="btnDelete" runat="server" Text="刪除" OnClick="btnDelete_Click1" />
                     <asp:Literal ID="ltMsg" runat="server"></asp:Literal>
-
-
-
 
                 </td>
             </tr>

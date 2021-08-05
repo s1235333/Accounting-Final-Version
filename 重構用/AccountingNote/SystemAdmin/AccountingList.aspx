@@ -9,7 +9,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-                <table>
+               <table>
             <tr>
                 <td colspan="2">
                     <h1>流水帳管理系統-後台</h1>
@@ -18,35 +18,35 @@
             <tr>
                 <td>
                     <a href ="UserInfo.aspx">使用者資訊</a><br />
-                    <a href="AccountingList.aspx">流水帳管理</a>
+                    <a href="AccountingList.aspx">流水帳管理</a><br />
+                     <a href="UserList.aspx">會員管理</a>
 
                 </td>
                 <td>
                         <%--這裡放主要內容--%>
-                    <asp:Button ID="btnCreate" runat="server" Text="Add Accounting" OnClick="btnCreate_Click" />
+                    <asp:Button ID="btnCreate" runat="server" Text="新增" OnClick="btnCreate_Click1" />
                     <asp:GridView ID="gvAccountingList" runat="server" AutoGenerateColumns="false" 
                      OnRowDataBound="gvAccountingList_RowDataBound">  <%--事件RowDataBound--%>
                         <Columns>
-                            <asp:BoundField HeaderText="標題" DataField="Caption" />
-                            <asp:BoundField HeaderText="金額" DataField="Amount" />
-                            <asp:TemplateField HeaderText="In/Out">
+                            <asp:BoundField HeaderText="建立日期" DataField="CreateDate" DataFormatString="{0:yyyy-MM-dd}"/>
+                             <asp:TemplateField HeaderText="收/支">
                                 <ItemTemplate>
                                    <%-- <%# ((int)Eval("ActType") == 0) ?"支出" :"收入" %>--%>
                                <%--     <asp:Literal runat="server" ID="ltActType"></asp:Literal>--%><%--此處改寫為不使用樣板來顯示支出及收入--%>
                                     <asp:Label ID="lblActType" runat="server" Text="Label"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-
-                            <asp:BoundField HeaderText="建立日期" DataField="CreateDate" DataFormatString="{0:yyyy-MM-dd}"/>
+                             <asp:BoundField HeaderText="金額" DataField="Amount" />
+                            <asp:BoundField HeaderText="標題" DataField="Caption" />  
                             <asp:TemplateField HeaderText="Act">
                                 <ItemTemplate>
-                                    <a href="/SystemAdmin/AccountingDetail.aspx?ID=<%# Eval("ID")%>">Edit</a>
+                                    <a href="/SystemAdmin/AccountingDetail.aspx?ID=<%# Eval("ID")%>">編輯</a>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView >
                     <asp:PlaceHolder ID="PlcNoData" runat="server" Visible="false">
-                    <p style="color:red;background-color:aquamarine">
+                    <p style="color: red; background-color:aquamarine">
                         No data in your AccountingNote.
                     </p>
                     </asp:PlaceHolder>

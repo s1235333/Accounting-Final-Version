@@ -167,5 +167,15 @@ namespace AccountingNote.SystemAdmin
         {
 
         }
+
+        protected void btnSave_Click1(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnDelete_Click1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

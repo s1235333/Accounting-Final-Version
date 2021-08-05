@@ -24,6 +24,8 @@ namespace AccountingNote.Auth
                 return true;
         }
 
+
+
         /// <summary>
         /// 取得已登入的使用者資訊(如果沒有登入就回傳null)
         /// </summary>

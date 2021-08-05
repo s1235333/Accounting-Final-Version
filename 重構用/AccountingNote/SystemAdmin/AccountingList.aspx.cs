@@ -88,6 +88,10 @@ namespace AccountingNote.SystemAdmin
 
         }
 
+        protected void btnCreate_Click1(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

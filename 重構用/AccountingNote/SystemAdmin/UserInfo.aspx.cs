@@ -41,5 +41,10 @@ namespace AccountingNote.SystemAdmin
             AuthManager.Logout(); //呼叫AuthManager中的方法
             Response.Redirect("/Login.aspx");//跳回登入頁
         }
+
+        protected void btnLogout_Click1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

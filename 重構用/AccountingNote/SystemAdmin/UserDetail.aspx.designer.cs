@@ -7,11 +7,11 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace AccountingNote
+namespace AccountingNote.SystemAdmin
 {
 
 
-    public partial class Default
+    public partial class UserDetail
     {
 
         /// <summary>
