@@ -25,8 +25,9 @@
                 <td>
                         <%--這裡放主要內容--%>
                     <asp:Button ID="btnCreate" runat="server" Text="新增" OnClick="btnCreate_Click1" />
-                    <asp:GridView ID="gvAccountingList" runat="server" AutoGenerateColumns="false" 
-                     OnRowDataBound="gvAccountingList_RowDataBound">  <%--事件RowDataBound--%>
+                    <asp:GridView ID="gvAccountingList" runat="server" AutoGenerateColumns="False" 
+                     OnRowDataBound="gvAccountingList_RowDataBound" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Horizontal">  <%--事件RowDataBound--%>
+                        <AlternatingRowStyle BackColor="#F7F7F7" />
                         <Columns>
                             <asp:BoundField HeaderText="建立日期" DataField="CreateDate" DataFormatString="{0:yyyy-MM-dd}"/>
                              <asp:TemplateField HeaderText="收/支">
@@ -44,12 +45,22 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
+                        <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
+                        <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
+                        <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
+                        <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
+                        <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
+                        <SortedAscendingCellStyle BackColor="#F4F4FD" />
+                        <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
+                        <SortedDescendingCellStyle BackColor="#D8D8F0" />
+                        <SortedDescendingHeaderStyle BackColor="#3E3277" />
                     </asp:GridView >
                     <asp:PlaceHolder ID="PlcNoData" runat="server" Visible="false">
                     <p style="color: red; background-color:aquamarine">
                         No data in your AccountingNote.
                     </p>
                     </asp:PlaceHolder>
+                     <asp:Label ID="lbl_Total" runat="server" Text=""></asp:Label>
                 </td>
             </tr>
         </table>

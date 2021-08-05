@@ -38,6 +38,16 @@ namespace AccountingNote.SystemAdmin
             {
                 this.gvAccountingList.DataSource = dt; //資料繫結
                 this.gvAccountingList.DataBind();
+
+                int totalMoneyCost = 0; //宣告初始值為0
+                foreach(DataRow dr in dt.Rows)
+                {
+                    int actType = dr.Field<int>("ActType");
+                    if (actType == 1) totalMoneyCost += dr.Field<int>("Amount");
+                    if (actType == 0) totalMoneyCost -= dr.Field<int>("Amount");
+                }
+
+                this.lbl_Total.Text = $"目前總金額:{totalMoneyCost}";
             }
             else  //資料筆數為0
             {
@@ -49,7 +59,7 @@ namespace AccountingNote.SystemAdmin
 
         protected void btnCreate_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/SystemAdmin/AccountingDetail.aspx"); //可以導入至細節處理
+            
 
         }
 
@@ -90,7 +100,7 @@ namespace AccountingNote.SystemAdmin
 
         protected void btnCreate_Click1(object sender, EventArgs e)
         {
-
+            Response.Redirect("/SystemAdmin/AccountingDetail.aspx"); //可以導入至細節處理
         }
     }
 

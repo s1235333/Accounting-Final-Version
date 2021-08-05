@@ -72,11 +72,11 @@ namespace AccountingNote.SystemAdmin
             }
         }
 
-        protected void btnSave_Click(object sender, EventArgs e)  //Checkinput方法另外抽在下面
+        protected void btnSave_Click1(object sender, EventArgs e)
         {
             List<string> msgList = new List<string>(); //儲存錯誤訊息
-                
-            if(!this.CheckInput(out msgList)) //檢查輸入值有誤
+
+            if (!this.CheckInput(out msgList)) //檢查輸入值有誤
             {
                 this.ltMsg.Text = string.Join("<bt/>", msgList); //字串結合
                 return;
@@ -103,10 +103,10 @@ namespace AccountingNote.SystemAdmin
             int amount = Convert.ToInt32(amountText);
             int actType = Convert.ToInt32(actTypeText);
 
-           
+
 
             string idText = this.Request.QueryString["ID"]; //取得參數id,將id存取為字串
-            if(string.IsNullOrWhiteSpace(idText))  //如果取得到id這個欄位
+            if (string.IsNullOrWhiteSpace(idText))  //如果取得到id這個欄位
             {
                 //呼叫 Execute'Insert into db'
                 AccountingManager.CreateAccounting(userID, caption, amount, actType, body); //假設是空字串,就呼叫新增模式
@@ -117,12 +117,13 @@ namespace AccountingNote.SystemAdmin
                 if (int.TryParse(idText, out id)) //以下試試看將ID使用TryParse轉型成數字,並成功轉型
                 {
                     //呼叫 Execute'update into db'
-                    AccountingManager.UpdateAccounting(id,userID, caption, amount, actType, body); //假設不是空字串,就呼叫編輯模式
+                    AccountingManager.UpdateAccounting(id, userID, caption, amount, actType, body); //假設不是空字串,就呼叫編輯模式
                 }
-            }
-            
 
-                Response.Redirect("/SystemAdmin/AccountingList.aspx"); //新增完一筆就導入流水帳列表頁
+            }
+
+
+            Response.Redirect("/SystemAdmin/AccountingList.aspx"); //新增完一筆就導入流水帳列表頁
 
         }
         private bool CheckInput(out List<string>errorMsgList) //檢查輸入值是否正確 (抽方法在此)
@@ -168,10 +169,7 @@ namespace AccountingNote.SystemAdmin
 
         }
 
-        protected void btnSave_Click1(object sender, EventArgs e)
-        {
-
-        }
+    
 
         protected void btnDelete_Click1(object sender, EventArgs e)
         {

@@ -36,6 +36,11 @@ namespace NewAccountungNote.DBSource
             }
         }
 
+        public static DataTable GetDataBase()
+        {
+            throw new NotImplementedException();
+        }
+
 
         //取得程式庫
 
