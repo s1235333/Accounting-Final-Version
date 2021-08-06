@@ -24,58 +24,58 @@ namespace AccountingNote.SystemAdmin
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// txt_Account 控制項。
+        /// txtAccount 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_Account;
+        protected global::System.Web.UI.WebControls.TextBox txtAccount;
 
         /// <summary>
-        /// txt_Name 控制項。
+        /// PlaceHolderPWD 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_Name;
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderPWD;
 
         /// <summary>
-        /// txt_Mail 控制項。
+        /// txtPassword 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_Mail;
+        protected global::System.Web.UI.WebControls.TextBox txtPassword;
 
         /// <summary>
-        /// PlacePWD 控制項。
+        /// txtPWDCheck 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder PlacePWD;
+        protected global::System.Web.UI.WebControls.TextBox txtPWDCheck;
 
         /// <summary>
-        /// txt_PWD 控制項。
+        /// txtName 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_PWD;
+        protected global::System.Web.UI.WebControls.TextBox txtName;
 
         /// <summary>
-        /// txt_CheckPWD 控制項。
+        /// txtMail 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_CheckPWD;
+        protected global::System.Web.UI.WebControls.TextBox txtMail;
 
         /// <summary>
         /// btnSave 控制項。
@@ -96,13 +96,13 @@ namespace AccountingNote.SystemAdmin
         protected global::System.Web.UI.WebControls.Button btnDelete;
 
         /// <summary>
-        /// btnPassword 控制項。
+        /// pwLink 控制項。
         /// </summary>
         /// <remarks>
         /// 自動產生的欄位。
         /// 若要修改，請將欄位宣告從設計工具檔案移到程式碼後置檔案。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPassword;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor pwLink;
 
         /// <summary>
         /// ltMsg 控制項。

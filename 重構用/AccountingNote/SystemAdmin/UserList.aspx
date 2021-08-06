@@ -10,7 +10,7 @@
 <body>
     <form id="form1" runat="server">
         <asp:Label ID="Label1" runat="server" Text="目前尚無使用者" Visible="False"></asp:Label>
-     <asp:Button ID="btn_addUser" runat="server" Text="新增使用者" OnClick="btn_addUser_Click" />
+     <asp:Button ID="btn_addUser" runat="server" Text="新增使用者" OnClick="btn_addUser_Click"/>
     <asp:GridView ID="gv_UserList" runat="server" AutoGenerateColumns="False" CellPadding="3" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
         <Columns>
             <asp:BoundField DataField="Account" HeaderText="帳號" />
@@ -18,7 +18,7 @@
             <asp:BoundField DataField="Email" HeaderText="電子郵件" />
             <asp:TemplateField HeaderText="編輯">
                 <ItemTemplate>
-                    <a href="/SystemAdmin/UserDetail.aspx?ID=<%# Eval("ID") %>">Edit</a>
+                    <a href="/SystemAdmin/UserPassword.aspx?ID=<%# Eval("ID") %>">Edit</a>
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
@@ -33,7 +33,6 @@
         <SortedDescendingHeaderStyle BackColor="#00547E" />
     </asp:GridView>
     <br />
-    
     </form>
 </body>
 </html>

@@ -30,7 +30,7 @@ namespace AccountingNote.Auth
         /// 取得已登入的使用者資訊(如果沒有登入就回傳null)
         /// </summary>
         /// <returns></returns>
-        public static UserInfoModel GetCnrrentUser()
+        public static UserInfoModel GetCurrentUser()
         {
             string account = HttpContext.Current.Session["UserLoginInfo"] as string;
 
@@ -56,6 +56,11 @@ namespace AccountingNote.Auth
             model.Email = dr["Email"].ToString();
 
             return model;
+        }
+
+        public static bool TryLogin(string inp_PWD, out string msg)
+        {
+            throw new NotImplementedException();
         }
 
         public static bool TryLogin(string inp_Account, string inp_PWD, out object msg)
@@ -115,5 +120,7 @@ namespace AccountingNote.Auth
 
 
         }
+
+        
     }
 }

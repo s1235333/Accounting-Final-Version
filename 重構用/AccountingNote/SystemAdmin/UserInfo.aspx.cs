@@ -22,7 +22,7 @@ namespace AccountingNote.SystemAdmin
                     return;
                 }
 
-                var currentUser=AuthManager.GetCnrrentUser();
+                var currentUser=AuthManager.GetCurrentUser();
                
                 if (currentUser == null) //有可能帳號被管理者移除掉,帳號不存在
                 {

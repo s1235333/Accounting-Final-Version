@@ -14,7 +14,7 @@ namespace AccountingNote.SystemAdmin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-          
+
 
             if (!AuthManager.IsLogined())
             {
@@ -22,9 +22,9 @@ namespace AccountingNote.SystemAdmin
                 return;
             }
 
-            var currentUser = AuthManager.GetCnrrentUser();
+            var currentUser = AuthManager.GetCurrentUser();
 
-            if (currentUser == null)                             // 如果帳號不存在，導至登入頁
+            if (currentUser == null) // 如果帳號不存在，導至登入頁
             {
                 this.Session["UserLoginInfo"] = null;
                 Response.Redirect("/Login.aspx");
@@ -34,30 +34,21 @@ namespace AccountingNote.SystemAdmin
             DataTable dt = UserInfoManager.GetDataBase("U");
             if (dt.Rows.Count > 0)  // check is empty data
             {
-         
-
                 this.gv_UserList.DataSource = dt;
                 this.gv_UserList.DataBind();
-
             }
             else
             {
                 this.gv_UserList.Visible = false;
-                this.Label1.Visible = true;
+
             }
             this.gv_UserList.DataSource = dt;
             this.gv_UserList.DataBind();
 
+
         }
 
-       
 
-        protected void btn_addUser_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/SystemAdmin/UserDetail.aspx");
-        }
-
-   
         private int GetCurrentPage()
         {
             string pageText = Request.QueryString["Page"];
@@ -72,6 +63,14 @@ namespace AccountingNote.SystemAdmin
             return intPage;
         }
 
-     
+        protected void btn_addUser_Click(object sender, EventArgs e)
+        {
+            //Response.Redirect("/SystemAdmin/UserDetail.aspx");
+
+            Response.Redirect("/SystemAdmin/UserDetail.aspx");
+
+        }
+
+
     }
 }

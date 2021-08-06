@@ -22,7 +22,7 @@ namespace AccountingNote.SystemAdmin
             }
             //透過Session先取得現在登入者為誰,得到使用者完整資訊
             string account = this.Session["UserLoginInfo"] as string;//取得帳號
-            var currentUser = AuthManager.GetCnrrentUser();
+            var currentUser = AuthManager.GetCurrentUser();
 
             if (currentUser == null) //有可能帳號被管理者移除掉,帳號不存在
             {

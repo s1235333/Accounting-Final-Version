@@ -229,7 +229,41 @@ namespace NewAccountungNote.DBSource
 
         }
 
+        public static bool CreateUserInfo(string account, string PWD, string name, string Email, string userLevel)
+        {
+            string connStr = DBHelper.GetConnectionString();
+            string dbCommand =
+                @"INSERT INTO UserInfo
+                    (ID, Account, PWD, Name, Email, UserLevel)
+                    VALUES
+                    (@UserID, @Account, @PWD, @Name, @Email, @UserLevel);
+                ";
 
+            //將參數查詢時需要的參數放進SqlParameter物件，再放進list裡面
+            List<SqlParameter> list = new List<SqlParameter>();
+            list.Add(new SqlParameter("@UserID", Guid.NewGuid().ToString()));
+            list.Add(new SqlParameter("@Account", account));
+            list.Add(new SqlParameter("@PWD", PWD));
+            list.Add(new SqlParameter("@Name", name));
+            list.Add(new SqlParameter("@Email", Email));
+            list.Add(new SqlParameter("@UserLevel", userLevel));
+
+            try
+            {
+                //呼叫ModifyData，回傳更動筆數
+                int effectRowsCount = DBHelper.ModifyData(connStr, dbCommand, list);
+
+                if (effectRowsCount == 0)
+                    return false;
+                else
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                Logger.WriteLog(ex);
+                return false;
+            }
+        }
     }
 }
 
