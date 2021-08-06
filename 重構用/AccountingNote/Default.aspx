@@ -9,13 +9,17 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <div style ="text-align:center">
          <h1>理財小幫手-開始你一天的錢錢日記</h1>
-        初次記帳:<asp:Literal ID="ltlFirst" runat="server"></asp:Literal><br />
-        最後記帳:<asp:Literal ID="ltlLast" runat="server"></asp:Literal><br />
-        記帳數量:<asp:Literal ID="ltlCount" runat="server"></asp:Literal><br />
-        會員數:<asp:Literal ID="ltlMember" runat="server"></asp:Literal><br />
+        <placeholder>
+        初次記帳:<asp:Literal ID="ltlFirst" runat="server"></asp:Literal><br /><br />
+        最後記帳:<asp:Literal ID="ltlLast" runat="server"></asp:Literal><br /><br />
+        記帳數量:<asp:Literal ID="ltlCount" runat="server"></asp:Literal><br /><br />
+        會員數:<asp:Literal ID="ltlMember" runat="server"></asp:Literal><br /><br />
         <asp:Literal ID="ltlmsg" runat="server"></asp:Literal>
         <asp:Button ID="btnLogin" runat="server" Text="點我登入"  OnClick="btnLogin_Click"/>
+        </placeholder>
+         </div>
     </form>
 </body>
 </html>

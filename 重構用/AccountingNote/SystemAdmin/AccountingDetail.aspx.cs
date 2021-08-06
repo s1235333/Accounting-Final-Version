@@ -166,7 +166,7 @@ namespace AccountingNote.SystemAdmin
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-
+            //無效
         }
 
     
@@ -174,6 +174,19 @@ namespace AccountingNote.SystemAdmin
         protected void btnDelete_Click1(object sender, EventArgs e)
         {
 
+            string idText = this.Request.QueryString["ID"];
+
+            if (string.IsNullOrWhiteSpace(idText))
+                return;
+
+            int id;
+            if (int.TryParse(idText, out id))
+            {
+                // Execute 'delete db'
+                AccountingManager.DeleteAccounting(id);
+            }
+
+            Response.Redirect("/SystemAdmin/AccountingList.aspx");
         }
     }
 }

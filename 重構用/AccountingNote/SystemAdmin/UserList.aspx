@@ -13,8 +13,8 @@
      <asp:Button ID="btn_addUser" runat="server" Text="新增使用者" OnClick="btn_addUser_Click" />
     <asp:GridView ID="gv_UserList" runat="server" AutoGenerateColumns="False" CellPadding="3" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px">
         <Columns>
-            <asp:BoundField DataField="Account" HeaderText="帳戶" />
-            <asp:BoundField DataField="Name" HeaderText="名稱" />
+            <asp:BoundField DataField="Account" HeaderText="帳號" />
+            <asp:BoundField DataField="Name" HeaderText="姓名" />
             <asp:BoundField DataField="Email" HeaderText="電子郵件" />
             <asp:TemplateField HeaderText="編輯">
                 <ItemTemplate>

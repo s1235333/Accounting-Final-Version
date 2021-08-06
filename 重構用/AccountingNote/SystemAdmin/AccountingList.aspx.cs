@@ -39,6 +39,8 @@ namespace AccountingNote.SystemAdmin
                 this.gvAccountingList.DataSource = dt; //資料繫結
                 this.gvAccountingList.DataBind();
 
+
+                //以下做金額加總
                 int totalMoneyCost = 0; //宣告初始值為0
                 foreach(DataRow dr in dt.Rows)
                 {
