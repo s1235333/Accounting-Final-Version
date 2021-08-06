@@ -39,11 +39,10 @@
                         <br />
                         <asp:Button ID="BtnCheck" runat="server" Text="確認" OnClick="BtnCheck_Click" />
                     </asp:PlaceHolder>
-                    <asp:PlaceHolder ID="PWDPlaceHolder" runat="server" Visible="false">密碼: 
-                   
-                        <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
+                    <asp:PlaceHolder ID="PWDPlaceHolder" runat="server" Visible="false">
+                        請輸入新密碼: <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
                         <br />
-                        密碼再次確認:
+                        新密碼再次確認:
                    
                         <asp:TextBox ID="txtPWDCheck" runat="server" TextMode="Password"></asp:TextBox>
                         <br />

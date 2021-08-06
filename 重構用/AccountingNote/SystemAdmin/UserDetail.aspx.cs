@@ -94,7 +94,7 @@ namespace AccountingNote.SystemAdmin
 
             UserInfoModel currentUser = AuthManager.GetCurrentUser();
             string isnew = this.Session["FromUserDetail"] as string;
-            if (isnew != null && isnew.CompareTo("yesfromdetail") == 0)  //若使用者是第一位，則破例讓他創
+            if (isnew != null && isnew.CompareTo("yesfromdetail") == 0)  //若使用者是第一位，讓使用者創
             {
                 //this.Session["UserLoginInfo"] = null;
             }
@@ -154,10 +154,14 @@ namespace AccountingNote.SystemAdmin
             if (string.IsNullOrWhiteSpace(idText))
                 return;
 
-            UserInfoManager.DeleteAccounting(idText);
+            int id;
+            if (int.TryParse(idText, out id))
+            {
+                // Execute 'delete db'
+                AccountingManager.DeleteAccounting(id);
+            }
 
-            Response.Redirect("/SystemAdmin/UserList.aspx");
-
+            Response.Redirect("/SystemAdmin/AccountingList.aspx");
         }
     }
 }

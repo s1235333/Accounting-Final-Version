@@ -70,7 +70,7 @@ namespace AccountingNote.SystemAdmin
             Response.Redirect("/SystemAdmin/UserDetail.aspx");
 
         }
-
+        
 
     }
 }
