@@ -1,5 +1,8 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AccountingList.aspx.cs" Inherits="AccountingNote.SystemAdmin.AccountingList" %>
 
+<%@ Register Src="~/UserControls/Ucpages.ascx" TagPrefix="uc1" TagName="Ucpages" %>
+
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -26,8 +29,7 @@
                         <%--這裡放主要內容--%>
                     <asp:Button ID="btnCreate" runat="server" Text="新增" OnClick="btnCreate_Click1" />
                     <asp:GridView ID="gvAccountingList" runat="server" AutoGenerateColumns="False" 
-                     OnRowDataBound="gvAccountingList_RowDataBound" BackColor="White" BorderColor="#E7E7FF" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Horizontal">  <%--事件RowDataBound--%>
-                        <AlternatingRowStyle BackColor="#F7F7F7" />
+                     OnRowDataBound="gvAccountingList_RowDataBound" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">  <%--事件RowDataBound--%>
                         <Columns>
                             <asp:BoundField HeaderText="建立日期" DataField="CreateDate" DataFormatString="{0:yyyy-MM-dd}"/>
                              <asp:TemplateField HeaderText="收/支">
@@ -45,19 +47,19 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
-                        <FooterStyle BackColor="#B5C7DE" ForeColor="#4A3C8C" />
-                        <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#F7F7F7" />
-                        <PagerStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" HorizontalAlign="Right" />
-                        <RowStyle BackColor="#E7E7FF" ForeColor="#4A3C8C" />
-                        <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="#F7F7F7" />
-                        <SortedAscendingCellStyle BackColor="#F4F4FD" />
-                        <SortedAscendingHeaderStyle BackColor="#5A4C9D" />
-                        <SortedDescendingCellStyle BackColor="#D8D8F0" />
-                        <SortedDescendingHeaderStyle BackColor="#3E3277" />
+                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+                        <RowStyle ForeColor="#000066" />
+                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                        <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView >
 
                     <asp:Literal ID="ltPager" runat="server"></asp:Literal>
-
+                    <uc1:Ucpages runat="server" ID="Ucpages" PageSize="10" TotalSize="10" CurrentPage="1" Url="AccountingList.aspx" />
 
                     <asp:PlaceHolder ID="PlcNoData" runat="server" Visible="false">
                     <p style="color: red; background-color:aquamarine">
