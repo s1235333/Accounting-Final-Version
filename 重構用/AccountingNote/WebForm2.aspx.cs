@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace AccountingNote
 {
-	public partial class Main1 : System.Web.UI.MasterPage
-	{
-		protected void Page_Load(object sender, EventArgs e)
-		{
+    public partial class WebForm2 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
 
-		}
-	}
+        }
+    }
 }

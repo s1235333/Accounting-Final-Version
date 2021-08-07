@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="AccountingNote.Main" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Main.master.cs" Inherits="AccountingNote.Main1" %>
 
 <!DOCTYPE html>
 
@@ -12,9 +12,8 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <h1>123</h1>
-            <asp:ContentPlaceHolder 
-                ID="ContentPlaceHolder1" runat="server">
+            <h1>Nene page</h1>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
     </form>

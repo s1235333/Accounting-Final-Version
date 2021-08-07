@@ -39,6 +39,15 @@ namespace AccountingNote.SystemAdmin
                 this.gvAccountingList.DataSource = dt; //資料繫結
                 this.gvAccountingList.DataBind();
 
+                var pages = (dt.Rows.Count / 10);   //分頁數=總筆數/10
+                
+                if(dt.Rows.Count%10>0) //假設餘數不為0
+                {
+                    pages += 1; //分頁數為+1頁
+                }
+
+                this.ltPager.Text = $"共{dt.Rows.Count}筆,共{pages}頁,目前在第{this.GetCurrentPage()}頁";
+
 
                 //以下做金額加總
                 int totalMoneyCost = 0; //宣告初始值為0
@@ -59,6 +68,25 @@ namespace AccountingNote.SystemAdmin
             }
         }
 
+        private int GetCurrentPage()   //判斷現在為第幾頁
+        {
+            string pageText = Request.QueryString["Page"];
+            if (string.IsNullOrWhiteSpace(pageText)) //如果是空字串
+                return 1;//當成第一頁回傳
+
+            int intpage;
+            if (!int.TryParse(pageText, out intpage)) //如果轉換失敗
+                return 1; //也是回傳第一頁
+
+            if (intpage <=0)
+                return 1;
+
+            return intpage;
+
+
+        }
+
+        //以下為空
         protected void btnCreate_Click(object sender, EventArgs e)
         {
             

@@ -76,10 +76,13 @@
     <Content Include="SystemAdmin\UserDetail.aspx" />
     <Content Include="SystemAdmin\UserInfo.aspx" />
     <Content Include="SystemAdmin\UserList.aspx" />
+    <Content Include="SystemAdmin\UserList3.aspx" />
     <Content Include="SystemAdmin\UserPassword.aspx" />
+    <Content Include="UserControls\Ucpages.ascx" />
     <Content Include="UserLIst\WebUserControl1.ascx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
+    <Content Include="WebForm2.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="about.aspx.cs">
@@ -128,6 +131,13 @@
     <Compile Include="SystemAdmin\AccountingList.aspx.designer.cs">
       <DependentUpon>AccountingList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemAdmin\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemAdmin\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
     <Compile Include="SystemAdmin\UserDetail.aspx.cs">
       <DependentUpon>UserDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -149,12 +159,26 @@
     <Compile Include="SystemAdmin\UserList.aspx.designer.cs">
       <DependentUpon>UserList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SystemAdmin\UserList3.aspx.cs">
+      <DependentUpon>UserList3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SystemAdmin\UserList3.aspx.designer.cs">
+      <DependentUpon>UserList3.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SystemAdmin\UserPassword.aspx.cs">
       <DependentUpon>UserPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="SystemAdmin\UserPassword.aspx.designer.cs">
       <DependentUpon>UserPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Ucpages.ascx.cs">
+      <DependentUpon>Ucpages.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\Ucpages.ascx.designer.cs">
+      <DependentUpon>Ucpages.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserLIst\WebUserControl1.ascx.cs">
       <DependentUpon>WebUserControl1.ascx</DependentUpon>
@@ -170,10 +194,18 @@
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Main.Master" />
     <None Include="packages.config" />
+    <Content Include="SystemAdmin\Admin.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -55,6 +55,10 @@
                         <SortedDescendingCellStyle BackColor="#D8D8F0" />
                         <SortedDescendingHeaderStyle BackColor="#3E3277" />
                     </asp:GridView >
+
+                    <asp:Literal ID="ltPager" runat="server"></asp:Literal>
+
+
                     <asp:PlaceHolder ID="PlcNoData" runat="server" Visible="false">
                     <p style="color: red; background-color:aquamarine">
                         No data in your AccountingNote.
